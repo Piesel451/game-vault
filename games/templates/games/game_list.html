@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Available Games</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for game in games %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ game.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ game.developer }}</h6>
+                    <p class="card-text">
+                        <strong>Rating:</strong>
+                        <span class="badge bg-warning text-dark">{{ game.rating }}/10</span>
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a href="#" class="btn btn-outline-secondary btn-sm">View Reviews</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="alert alert-info">No games found in the database.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
