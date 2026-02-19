@@ -21,7 +21,7 @@
                     </p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
-                    <a href="#" class="btn btn-outline-secondary btn-sm">View Reviews</a>
+                    <a href="{% url 'game_reviews' game.pk %}" class="btn btn-outline-secondary btn-sm">View Reviews</a>
                 </div>
             </div>
         </div>
@@ -30,6 +30,7 @@
             <p class="alert alert-info">No games found in the database.</p>
         </div>
         {% endfor %}
+        
     </div>
 </div>
 {% endblock %}

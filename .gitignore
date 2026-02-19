@@ -1,7 +1,9 @@
 venv/
 env/
 ENV/
-static/
+staticfiles/
+static_root/
+media/
 *.pyc
 __pycache__/
 db.sqlite3
