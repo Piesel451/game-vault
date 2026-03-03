@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="mb-4">
+        <a href="{% url 'games:games_list' %}" class="btn btn-link text-decoration-none p-0">
+            Back to Games
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h1 class="display-5 text-primary fw-bold">{{ game.title }}</h1>
+                            <p class="lead text-muted">{{ game.developer }}</p>
+                        </div>
+                        <span class="badge bg-warning text-dark fs-5 p-3 shadow-sm">
+                            {{ game.get_average_rating }}/10
+                        </span>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h5 class="fw-bold">About this game</h5>
+                    <p class="card-text">
+                        {{ game.description|default:"No description provided for this title." }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Game Details</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <strong class="text-secondary small text-uppercase">Release Date:</strong><br>
+                            <span>{{ game.release_date|date:"F d, Y"|default:"TBA" }}</span>
+                        </li>
+                        <li class="mb-2">
+                            <strong class="text-secondary small text-uppercase">Genre:</strong><br>
+                            <span class="badge bg-secondary">{{ game.genre|default:"N/A" }}</span>
+                        </li>
+                        <li class="mb-0 text-center mt-4">
+                             <a href="{% url 'games:game_reviews' game.pk %}" class="btn btn-primary w-100">
+                                Read All Reviews
+                             </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

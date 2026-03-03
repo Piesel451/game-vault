@@ -17,11 +17,12 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ game.developer }}</h6>
                     <p class="card-text">
                         <strong>Rating:</strong>
-                        <span class="badge bg-warning text-dark">{{ game.rating }}/10</span>
+                        <span class="badge bg-warning text-dark">{{ game.get_average_rating|default:"0.0" }}/10</span>
                     </p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
-                    <a href="{% url 'game_reviews' game.pk %}" class="btn btn-outline-secondary btn-sm">View Reviews</a>
+                    <a href="{% url 'games:game_reviews' game.pk %}" class="btn btn-outline-secondary btn-sm">View Reviews</a>
+                    <a href="{% url 'games:game_detail' game.pk %}" class="btn btn-outline-secondary btn-sm">Game details</a>
                 </div>
             </div>
         </div>

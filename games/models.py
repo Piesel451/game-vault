@@ -7,6 +7,10 @@ class Game(models.Model):
     developer = models.CharField(max_length=100)
     release_date = models.DateField()
 
+    def get_average_rating(self):
+        result = self.game_reviews.aggregate(models.Avg('rating'))
+        return result['rating__avg'] or 0
+
     def __str__(self):
         return self.title
 
